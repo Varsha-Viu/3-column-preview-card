@@ -1,0 +1,157 @@
+// primary colors
+$brightOrange: hsl(31, 77%, 52%);
+$cyan: hsl(184, 100%, 22%);
+$darkCyan: hsl(179, 100%, 13%);
+
+// neutral color
+$transparentWhite: hsla(0, 0%, 100%, 0.75);
+$lightGray: hsl(0, 0%, 95%);
+
+
+//font
+$bodyFontSize: 0.93rem;
+$bodyFontFamily: 'Lexend Deca', sans-serif;
+$headingFontFamily: 'Big Shoulders Display', cursive;
+$fw-400: 400;
+$fw-700: 700;
+
+//border radius
+$br-7: 7px;
+
+@mixin df {
+    display: flex;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: {
+        size: $bodyFontSize;
+        family: $bodyFontFamily;
+        weight: $fw-400;
+    }
+
+    min-height: 100vh;
+    background-color: $lightGray;
+    @include df;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main {
+    @include df;
+    justify-content: center;
+}
+h1 {
+    text-transform: uppercase;
+    color: $lightGray;
+    font-size: 2.8rem;
+    font-family: $headingFontFamily;
+}
+p {
+    color: $transparentWhite;
+    line-height: 2;
+    width: 80%;
+}
+.card {
+    flex-basis: 350px;
+    height: 550px;
+    @include df;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 2rem 2.8rem;
+
+    &.card_sedan {
+        background-color: $brightOrange;
+        border-radius: $br-7 0 0 $br-7;
+    }
+    &.card_suv {
+        background-color: $cyan;
+    }
+    &.card_luxury {
+        background-color: $darkCyan;
+        border-radius: 0 $br-7 $br-7 0;
+    }
+}
+
+
+button {
+    border: {
+        width: 2px;
+        color: transparent;
+        radius: 50px;
+    }
+    padding: 1rem;
+    width: 150px;
+    background-color: $lightGray;
+    text-align: center;
+    font-weight: $fw-700;
+    letter-spacing: 0.7px;
+    cursor: pointer;
+
+    &.btn_sedan {
+        color: $brightOrange;
+    }
+    &.btn_suv {
+        color: $cyan
+    }
+    &.btn_luxury {
+        color: $darkCyan;
+    }
+
+    &:hover {
+        background-color: transparent;
+        border: 2px solid $lightGray;
+        color: $lightGray;
+    }
+}
+
+.attribution {
+  font-size: $bodyFontSize;
+  text-align: center;
+
+  a {
+    color: $cyan;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 785px) {
+    body {
+        padding: 2rem 0.2rem;
+    }
+    main {
+        flex-direction: column;
+        width: 320px;
+        min-width: 300px;
+    }
+    .card {
+        flex-basis: 300px;
+        height: 500px;
+        gap: 2rem;
+
+        &.card_sedan {
+            border-radius: $br-7 $br-7 0 0;
+        }
+        &.card_luxury {
+            border-radius: 0 0 $br-7 $br-7;
+        }
+    }
+}
+
+@media screen and (min-width: 785px) and (max-width: 1200px) {
+    body {
+        padding: 1rem;
+    }
+}
